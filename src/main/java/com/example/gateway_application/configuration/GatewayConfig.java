@@ -21,7 +21,8 @@ public class GatewayConfig {
             if (CorsUtils.isCorsRequest(request)) {
                 ServerHttpResponse response = ctx.getResponse();
                 HttpHeaders headers = response.getHeaders();
-                headers.add("Access-Control-Allow-Origin", "*");
+                String origin = request.getHeaders().getOrigin();
+                headers.add("Access-Control-Allow-Origin", origin);
                 headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
                 headers.add("Access-Control-Allow-Headers", "*");
                 headers.add("Access-Control-Allow-Credentials", "true");
